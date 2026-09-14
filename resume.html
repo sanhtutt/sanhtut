@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>San Htut | Resume</title>
+    <style>
+        :root {
+            --bg: #0b1020;
+            --panel: #121a2d;
+            --card: #172033;
+            --text: #edf3ff;
+            --muted: #a8b6d3;
+            --primary: #7c9cff;
+            --accent: #8ef0c3;
+            --border: rgba(255,255,255,0.08);
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, #0b1020, #121a2d);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: min(980px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .page {
+            background: rgba(18,26,45,0.9);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            margin: 32px auto;
+            padding: 32px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 16px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2rem, 3vw, 3rem);
+            letter-spacing: -0.06em;
+        }
+
+        .title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-top: 8px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: flex-end;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .links a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .links a:hover,
+        .links a:focus-visible {
+            color: var(--text);
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 28px;
+        }
+
+        section {
+            margin-bottom: 26px;
+        }
+
+        h2 {
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        p, li {
+            color: var(--muted);
+        }
+
+        .job {
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .job:last-child {
+            border-bottom: none;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .job-header strong {
+            color: var(--text);
+            font-size: 1.02rem;
+        }
+
+        .job p {
+            margin: 4px 0;
+        }
+
+        .role {
+            color: #dfe8ff;
+            font-weight: 700;
+        }
+
+        .coursework {
+            margin: 0;
+        }
+
+        strong {
+            color: var(--text);
+        }
+
+        ul {
+            margin: 8px 0 0 18px;
+            padding: 0;
+        }
+
+        .skills span {
+            display: inline-block;
+            margin: 0 8px 8px 0;
+            padding: 0.45rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(124, 156, 255, 0.12);
+            border: 1px solid rgba(124, 156, 255, 0.25);
+            color: #dfe8ff;
+            font-size: 0.85rem;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 18px;
+            margin-right: 10px;
+            background: linear-gradient(135deg, var(--primary), #5d7ef7);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width: 760px) {
+            .header,
+            .two-col,
+            .job-header {
+                grid-template-columns: 1fr;
+                display: block;
+            }
+
+            .links {
+                justify-content: flex-start;
+                margin-top: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page">
+            <div class="header">
+                <div>
+                    <h1>San Htut</h1>
+                    <div class="title">Data Science • Statistical Modeling • Analytics</div>
+                </div>
+                <div class="links">
+                    <span>Cupertino, CA</span>
+                    <a href="mailto:sanhtutsan007@gmail.com">sanhtutsan007@gmail.com</a>
+                    <a href="tel:+14087717296">(408) 771-7296</a>
+                    <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <section>
+                        <h2>Projects</h2>
+
+                        <div class="job">
+                            <div class="job-header">
+                                <strong>Factorial Experimental Design & ANOVA Modeling</strong>
+                            </div>
+                            <p class="role">Statistical Analyst & Researcher | 2x3 Factorial Experimental Design Project</p>
+                            <ul>
+                                <li>Designed a 2x3 randomized block factorial experiment in R, controlling geographic variance via nuisance blocking.</li>
+                                <li>Conducted power analyses and stratified randomization in R to determine optimal sample size and mitigate confounding bias.</li>
+                                <li>Modeled two-way ANOVA and interaction effects, visualizing key multivariate findings with ggplot2 for stakeholders.</li>
+                            </ul>
+                        </div>
+
+                        <div class="job">
+                            <div class="job-header">
+                                <strong>Multivariate Logistic Regression & Spatio-Temporal Analytics</strong>
+                            </div>
+                            <p class="role">Data Analyst / Researcher | Characterizing Law Enforcement Response to Vehicle Theft in Los Angeles</p>
+                            <ul>
+                                <li>Built an R data pipeline to clean, de-identify, and query 1M+ LAPD records, isolating 115,000+ vehicle theft cases.</li>
+                                <li>Trained multivariate logistic regression models, identifying statistically significant (p &lt; 0.05) temporal and spatial risk factors.</li>
+                                <li>Ran longitudinal time-series decompositions to detect neighborhood crime surges and guide targeted resource allocation.</li>
+                            </ul>
+                        </div>
+
+                        <div class="job">
+                            <div class="job-header">
+                                <strong>Machine Learning Pipelines & Survival Analysis on UCLA Administrative Data</strong>
+                            </div>
+                            <p class="role">Data Science Consultant & Researcher | Statistical Modeling & Survival Analysis of Large-Scale UCLA Administrative Data</p>
+                            <ul>
+                                <li>Integrated 100K+ relational enrollment records to evaluate long-term instructional demand and post-COVID shifts.</li>
+                                <li>Deployed predictive models (Logistic Regression AUC = 0.7494, Random Forests) to forecast course under-enrollment risks.</li>
+                                <li>Modeled student attrition with Kaplan-Meier survival curves, delivering actionable curriculum consolidation strategies.</li>
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+
+                <div>
+                    <section>
+                        <h2>Education</h2>
+                        <p><strong>University of California, Los Angeles (UCLA)</strong><br />Bachelor of Science in Data Science<br />Graduated 08/2026</p>
+                    </section>
+
+                    <section>
+                        <h2>Programming</h2>
+                        <div class="skills">
+                            <span>R</span>
+                            <span>C++</span>
+                            <span>Python</span>
+                            <span>SQL</span>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Libraries & Tools</h2>
+                        <div class="skills">
+                            <span>Pandas</span>
+                            <span>NumPy</span>
+                            <span>ggplot2</span>
+                            <span>tidyverse</span>
+                            <span>Git</span>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Languages</h2>
+                        <p>Burmese (Native)<br />English (Bilingual)<br />Chinese (Conversational)</p>
+                    </section>
+
+                    <section>
+                        <h2>Coursework</h2>
+                        <p class="coursework">Computational Statistics, Monte Carlo Methods, Statistical Consulting, Design & Analysis of Experiments, Linear Models & Regression, and Mathematical Modeling</p>
+                    </section>
+                </div>
+            </div>
+
+            <section>
+                <h2>Work Experience</h2>
+
+                <div class="job">
+                    <div class="job-header">
+                        <strong>Tpumps | Cupertino, CA</strong>
+                        <span>Boba Barista (03/2023-11/2023) | Lead Supervisor (11/2023-Present)</span>
+                    </div>
+                    <ul>
+                        <li>Directed daily shift operations, delegating workflow assignments across team members to optimize order throughput during peak business hours.</li>
+                        <li>Managed inventory auditing, restock schedules, and facility quality inspections while authoring comprehensive end-of-shift reports.</li>
+                        <li>Coached and onboarded new team members on beverage quality standards, operational speed, and company policy compliance.</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <strong>McDonald’s | Cupertino, CA</strong>
+                        <span>Cashier (01/2019-03/2023)</span>
+                    </div>
+                    <ul>
+                        <li>Processed high-volume cash and POS transactions with consistent register accuracy in a fast-paced environment.</li>
+                        <li>Resolved customer inquiries efficiently while adhering strictly to food safety, sanitation, and inventory staging protocols.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <a class="button" href="index.html">Back to Portfolio</a>
+            <a class="button" href="San_Htut_Resume.pdf" download>Download PDF</a>
+        </div>
+    </div>
+</body>
+</html>
