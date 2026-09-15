@@ -618,5 +618,27 @@
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
+
+// Secret Easter Egg: Type "UCLA" anywhere on the page to play the UCLA Fight Song.
+
+<script>
+    let typedKeys = "";
+    const secretAudio = new Audio("UCLA_Fight_Song.m4a");
+    const secretImage = document.getElementById("ucla-image");
+
+    document.addEventListener("keydown", function (event) {
+        typedKeys += event.key.toLowerCase();
+        typedKeys = typedKeys.slice(-4);
+
+        if (typedKeys === "ucla") {
+        secretAudio.currentTime = 0;
+            secretAudio.play();
+
+            typedKeys = "";
+        }
+    });
+    
+</script>
+
 </html>
 
