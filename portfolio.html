@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>San Htut | Personal Website</title>
+    <meta name="description" content="San Htut - Data Science graduate specializing in statistical modeling, analytics, and R." />
+    <style>
+        :root {
+            --bg: #fff;
+            --bg-soft: #fafafa;
+            --panel: #fff;
+            --card: #f7f7f7;
+            --text: #111;
+            --muted: #666;
+            --primary: #111;
+            --primary-strong: #333;
+            --accent: #111;
+            --border: #ddd;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.92);
+            border-bottom: 1px solid var(--border);
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 72px;
+            gap: 20px;
+        }
+
+        .brand {
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--text);
+        }
+
+        .button {
+            display: inline-block;
+            background: #111;
+            color: white;
+            border: none;
+            border-radius: 999px;
+            padding: 0.9rem 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14);
+        }
+
+        .button:hover,
+        .button:focus-visible {
+            transform: translateY(-2px);
+        }
+
+        .button.secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            box-shadow: none;
+            color: var(--text);
+        }
+
+        main {
+            padding-bottom: 64px;
+        }
+
+        section {
+            padding: 88px 0;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 40px;
+            min-height: 72vh;
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 0.8rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(2.8rem, 5vw, 5rem);
+            line-height: 1.05;
+            margin: 0 0 18px;
+            letter-spacing: -0.06em;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .lead {
+            max-width: 620px;
+            color: var(--muted);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .mini-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .mini-stat {
+            min-width: 120px;
+        }
+
+        .mini-stat strong {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--text);
+        }
+
+        .mini-stat span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .profile-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .avatar {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 24px;
+            object-fit: cover;
+            display: block;
+            margin-bottom: 22px;
+            border: 1px solid var(--border);
+            background: #f2f2f2;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .card-list li {
+            display: flex;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: #fafafa;
+            border: 1px solid #e6e6e6;
+            color: var(--muted);
+        }
+
+        .card-list strong {
+            color: var(--text);
+        }
+
+        .section-header {
+            margin-bottom: 26px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+            margin: 0 0 10px;
+            letter-spacing: -0.05em;
+        }
+
+        .section-header p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 640px;
+        }
+
+        .about-grid,
+        .projects-grid,
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 26px;
+        }
+
+        .panel p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+
+        .skills span {
+            display: inline-block;
+            background: #f3f3f3;
+            color: #222;
+            border: 1px solid #d8d8d8;
+            border-radius: 999px;
+            padding: 0.55rem 0.85rem;
+            font-size: 0.92rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            height: 100%;
+        }
+
+        .project-visual {
+            height: 180px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #fafafa, #e5e5e5);
+            border: 1px solid #ddd;
+            display: grid;
+            place-items: center;
+            color: var(--text);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        .project-card h3 {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        .project-card p {
+            margin: 0;
+            color: var(--muted);
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .project-tags span {
+            background: #f7f7f7;
+            border: 1px solid #e1e1e1;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            color: var(--muted);
+            padding: 0.45rem 0.7rem;
+        }
+
+        .contact-box {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-links {
+            display: grid;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .contact-links a,
+        .contact-links span {
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 0.9rem 1rem;
+            background: #fafafa;
+        }
+        .menu-button { position: fixed; top: 22px; left: 22px; z-index: 30; width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 14px; background: rgba(255,255,255,.94); color: #111; font-size: 1.45rem; cursor: pointer; }
+        .sidebar { position: fixed; inset: 0 auto 0 0; z-index: 40; width: min(310px,86vw); padding: 28px; background: rgba(255,255,255,.98); border-right: 1px solid var(--border); transform: translateX(-105%); transition: transform .28s ease; box-shadow: 20px 0 60px rgba(0,0,0,.12); }
+        .sidebar.open { transform: translateX(0); }
+        .close { float: right; border: 0; background: transparent; color: var(--muted); font-size: 1.8rem; cursor: pointer; }
+        .sidebar .name { margin: 52px 0 6px; font-size: 1.35rem; font-weight: 800; }
+        .sidebar .role { color: var(--text); font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; }
+        .sidebar-nav { display: grid; align-items: stretch; justify-content: stretch; min-height: 0; gap: 10px; margin-top: 38px; }
+        .sidebar-nav a { display: block; width: 100%; padding: 14px 16px; border: 1px solid transparent; border-radius: 13px; color: var(--muted); }
+        .sidebar-nav a:hover, .sidebar-nav a:focus-visible, .sidebar-nav a.active { color: #111; background: #f3f3f3; border-color: #d5d5d5; }
+        .shade { position: fixed; inset: 0; z-index: 35; background: rgba(0,0,0,.35); opacity: 0; pointer-events: none; transition: opacity .28s; }
+        .shade.show { opacity: 1; pointer-events: auto; }
+
+        @media (max-width: 760px) {
+            .hero,
+            .about-grid,
+            .projects-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-direction: column;
+                justify-content: center;
+                padding: 18px 0;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            section {
+                padding: 72px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="menu-button" id="menuButton" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">☰</button>
+    <aside class="sidebar" id="sidebar" aria-label="Main menu">
+        <button class="close" id="closeButton" aria-label="Close menu">×</button>
+        <div class="name">San Htut</div><div class="role">Personal Portfolio</div>
+        <nav class="sidebar-nav"><a href="index.html">Welcome</a><a class="active" href="portfolio.html">Portfolio</a><a href="photography.html">Photography</a></nav>
+    </aside>
+    <div class="shade" id="shade"></div>
+        <div class="container">
+            <nav aria-label="Main navigation">
+                <a href="#top"></a>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#resume">Resume</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+
+    <main id="top">
+        <section class="container hero">
+            <div>
+                <div class="eyebrow">Data Science • Statistical Modeling • Analytics</div>
+                <h1>Hi, I’m <span class="highlight">San Htut</span>.<br />I turn complex data into useful insights.</h1>
+                <p class="lead">
+                    I’m a UCLA Data Science graduate with hands-on experience in experimental design, predictive
+                    modeling, survival analysis, and large-scale data analytics using R, Python, and SQL.
+                </p>
+                <div class="cta-row">
+                    <a href="#contact" class="button">Let’s connect</a>
+                    <a href="resume.html" class="button secondary">View resume</a>
+                </div>
+                <div class="mini-stats" aria-label="Quick facts">
+                    <div class="mini-stat">
+                        <strong>3</strong>
+                        <span>Major analytics projects</span>
+                    </div>
+                    <div class="mini-stat">
+                        <strong>4</strong>
+                        <span>Programming languages</span>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="profile-card" aria-label="Profile summary">
+                <img
+                    class="avatar"
+                    src="https://media.licdn.com/dms/image/v2/D4E03AQETKyzVRsRIKQ/profile-displayphoto-shrink_400_400/B4EZbmm8rCHMAg-/0/1747625693239?e=1790812800&v=beta&t=37EasAKCeAETbUpR0VgEE_qFEr1zzfeNcHcVXNY68Zo"
+                    alt="Portrait of San Htut"
+                    loading="eager"
+                />
+                <ul class="card-list">
+                    <li><span>Based in</span><strong>Cupertino, CA</strong></li>
+                    <li><span>Education</span><strong>UCLA Data Science</strong></li>
+                    <li><span>Focus</span><strong>Statistical analytics</strong></li>
+                </ul>
+            </aside>
+        </section>
+
+        <section id="about" class="container">
+                <div class="section-header">
+                    <div class="eyebrow">About Me</div>
+                <h2>I use statistics and data to answer real-world questions.</h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="panel">
+                    <p>
+                        I earned my Bachelor of Science in Data Science from UCLA in August 2026. My academic work
+                        focused on computational statistics, Monte Carlo methods, experimental design, regression,
+                        statistical consulting, and mathematical modeling.
+                    </p>
+                </div>
+                <div class="panel">
+                    <p>
+                        I have built analytical pipelines for million-record datasets, trained predictive models,
+                        designed randomized experiments, and communicated multivariate findings through clear
+                        visualizations and practical recommendations.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="container">
+            <div class="section-header">
+                <div class="eyebrow">Projects</div>
+                <h2>Applied statistics and data science in practice.</h2>
+            </div>
+
+            <div class="projects-grid">
+                <article class="panel project-card">
+                    <div class="project-visual">Experimental Design</div>
+                    <div>
+                        <h3>Factorial Design & ANOVA</h3>
+                        <p>Designed a 2x3 randomized block experiment, conducted power analysis and stratified randomization, and modeled interaction effects in R.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span>R</span>
+                        <span>Two-way ANOVA</span>
+                        <span>ggplot2</span>
+                    </div>
+                </article>
+
+                <article class="panel project-card">
+                    <div class="project-visual">Public Safety Analytics</div>
+                    <div>
+                        <h3>Vehicle Theft Analytics</h3>
+                        <p>Built an R pipeline for 1M+ LAPD records, isolated 115,000+ vehicle theft cases, and identified significant temporal and spatial risk factors.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span>Logistic Regression</span>
+                        <span>Time Series</span>
+                        <span>R</span>
+                    </div>
+                </article>
+
+                <article class="panel project-card">
+                    <div class="project-visual">Predictive Analytics</div>
+                    <div>
+                        <h3>UCLA Administrative Data</h3>
+                        <p>Integrated 100K+ enrollment records, forecast under-enrollment risk, and modeled student attrition with Kaplan-Meier survival curves.</p>
+                    </div>
+                    <div class="project-tags">
+                        <span>Random Forests</span>
+                        <span>Survival Analysis</span>
+                        <span>AUC 0.7494</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="experience" class="container">
+            <div class="section-header">
+                <div class="eyebrow">Work Experience</div>
+                <h2>Leadership, operations, and customer service.</h2>
+            </div>
+
+            <div class="projects-grid">
+                <article class="panel project-card">
+                    <div>
+                        <h3>Tpumps</h3>
+                        <p><strong>Boba Barista (03/2023-11/2023) | Lead Supervisor (11/2023-Present)</strong></p>
+                        <p>Direct daily shift operations, manage inventory and quality inspections, prepare end-of-shift reports, and coach new team members.</p>
+                    </div>
+                </article>
+
+                <article class="panel project-card">
+                    <div>
+                        <h3>McDonald’s</h3>
+                        <p><strong>Cashier (01/2019-03/2023)</strong></p>
+                        <p>Processed high-volume POS transactions, resolved customer inquiries, and followed food safety, sanitation, and inventory protocols.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills" class="container">
+            <div class="section-header">
+                <div class="eyebrow">Skills</div>
+                <h2>Tools and strengths I bring to projects.</h2>
+            </div>
+
+            <div class="panel">
+                <div class="skills" aria-label="Skill list">
+                    <span>R</span>
+                    <span>C++</span>
+                    <span>Python</span>
+                    <span>SQL</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>ggplot2</span>
+                    <span>tidyverse</span>
+                    <span>Git</span>
+                    <span>Burmese — Native</span>
+                    <span>English — Bilingual</span>
+                    <span>Chinese — Conversational</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="container">
+            <div class="section-header">
+                <div class="eyebrow">Resume</div>
+                <h2>My background in one place.</h2>
+            </div>
+
+            <div class="panel contact-box">
+                <p>
+                    Review my education, technical skills, analytical projects, and professional experience in a
+                    structured web format or download the original PDF.
+                </p>
+                <div class="cta-row">
+                    <a href="resume.html" class="button" target="_blank" rel="noreferrer">Open web resume</a>
+                    <a href="San_Htut_Resume.pdf" class="button secondary" download>Download PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <div class="section-header">
+                <div class="eyebrow">Contact</div>
+                <h2>Let’s connect.</h2>
+            </div>
+
+            <div class="contact-grid">
+                <div class="panel contact-box">
+                    <p>
+                        I’m interested in data science and analytics opportunities where statistical modeling and
+                        clear communication can support better decisions.
+                    </p>
+                    <div class="cta-row">
+                        <a href="mailto:sanhtutsan007@gmail.com" class="button">sanhtutsan007@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="contact-links">
+                        <a href="https://www.linkedin.com/in/san-htut-b6a620363/" target="_blank" rel="noreferrer">LinkedIn</a>
+                        <span>Cupertino, CA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+        const sidebar=document.getElementById('sidebar'),shade=document.getElementById('shade'),menu=document.getElementById('menuButton'),close=document.getElementById('closeButton');
+        function setMenu(open){sidebar.classList.toggle('open',open);shade.classList.toggle('show',open);menu.setAttribute('aria-expanded',open);if(open)close.focus();else menu.focus()}
+        menu.addEventListener('click',()=>setMenu(true));close.addEventListener('click',()=>setMenu(false));shade.addEventListener('click',()=>setMenu(false));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebar.classList.contains('open'))setMenu(false)});
+    </script>
+</body>
+</html>
+
+<!-- Secret Easter Egg: Type "UCLA" anywhere on the page to play the UCLA Fight Song.-->
+
+<script>
+    let typedKeys = "";
+    const secretAudio = new Audio("UCLA_Fight_Song.m4a");
+
+    document.addEventListener("keydown", function (event) {
+        typedKeys += event.key.toLowerCase();
+        typedKeys = typedKeys.slice(-4);
+
+        if (typedKeys === "ucla") {
+        secretAudio.currentTime = 0;
+            secretAudio.play();
+
+            typedKeys = "";
+        }
+    });
+    
+</script>
+
+</html>
+
