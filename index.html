@@ -44,5 +44,17 @@
     function setMenu(open){sidebar.classList.toggle('open',open);shade.classList.toggle('show',open);menu.setAttribute('aria-expanded',open);if(open)close.focus();else menu.focus()}
     menu.addEventListener('click',()=>setMenu(true));close.addEventListener('click',()=>setMenu(false));shade.addEventListener('click',()=>setMenu(false));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebar.classList.contains('open'))setMenu(false)});
   </script>
+
+  <script>
+    let typedKeys = "";
+    document.addEventListener("keydown", function (event) {
+    typedKeys += event.key.toLowerCase();
+    typedKeys = typedKeys.slice(-6);
+      if (typedKeys === "friend") {
+        window.location.href = "friend.html";
+      }
+    });
+  </script>
+  
 </body>
 </html>
