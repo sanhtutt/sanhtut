@@ -230,6 +230,56 @@
       border: 1px solid var(--border);
       border-radius: 20px;
       background: #f3f3f3;
+      cursor: zoom-in;
+    }
+
+    .photo:focus-visible {
+      outline: 3px solid #111;
+      outline-offset: 3px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: grid;
+      place-items: center;
+      padding: 58px 18px 30px;
+      background: rgba(0, 0, 0, 0.94);
+    }
+
+    .lightbox[hidden] {
+      display: none;
+    }
+
+    .lightbox img {
+      display: block;
+      max-width: 100%;
+      max-height: calc(100vh - 88px);
+      max-height: calc(100dvh - 88px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      box-shadow: 0 10px 45px rgba(0, 0, 0, 0.3);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 2rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .lightbox-close:focus-visible {
+      outline: 3px solid white;
     }
 
     /* Makes every picture fill its frame */
@@ -888,12 +938,60 @@
 
   </main>
 
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close photo">×</button>
+    <img id="lightboxImage" alt="">
+  </div>
+
   <script>
     const sidebar = document.getElementById("sidebar");
     const shade = document.getElementById("shade");
     const menu = document.getElementById("menuButton");
     const close = document.getElementById("closeButton");
     const photos = [...document.querySelectorAll(".photo")];
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxClose = document.getElementById("lightboxClose");
+    let previousFocus;
+
+    function closePhoto() {
+      lightbox.hidden = true;
+      lightboxImage.removeAttribute("src");
+      document.body.style.overflow = "";
+      if (previousFocus) previousFocus.focus();
+    }
+
+    photos.forEach(function (photo) {
+      photo.tabIndex = 0;
+      photo.setAttribute("role", "button");
+      photo.setAttribute("aria-label", "Enlarge photo");
+
+      function openPhoto() {
+        const image = photo.querySelector("img");
+        previousFocus = photo;
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightbox.hidden = false;
+        document.body.style.overflow = "hidden";
+        lightboxClose.focus();
+      }
+
+      photo.addEventListener("click", openPhoto);
+      photo.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openPhoto();
+        }
+      });
+    });
+
+    lightboxClose.addEventListener("click", closePhoto);
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) closePhoto();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !lightbox.hidden) closePhoto();
+    });
 
     function randomChoice(options) {
       return options[Math.floor(Math.random() * options.length)];
