@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Welcome to San Htut's personal website.">
   <title>Welcome | San Htut</title>
-  <link rel="icon" type="image/jpeg" href="https://img.magnific.com/free-vector/letter-s-icon-logo-design-vector_474888-4277.jpg?semt=ais_hybrid&w=740&q=80">
+  <link rel="icon" type="image/svg+xml" href="https://img.magnific.com/free-vector/letter-s-icon-logo-design-vector_474888-4277.jpg?semt=ais_hybrid&w=740&q=80">
   <style>
     :root{--bg:#fff;--panel:#fff;--text:#111;--muted:#666;--primary:#111;--accent:#111;--border:#ddd}
     *{box-sizing:border-box} body{margin:0;min-height:100vh;font-family:Arial,Helvetica,sans-serif;background:#fff;color:var(--text)}
@@ -32,12 +32,12 @@
   <aside class="sidebar" id="sidebar" aria-label="Main menu">
     <button class="close" id="closeButton" aria-label="Close menu">×</button>
     <div class="name">San Htut</div><div class="role">Personal Portfolio</div>
-    <nav class="nav"><a class="active" href="index.html">Welcome</a><a href="portfolio.html">Portfolio</a><a href="photography.html">Photography</a><a href="resume.html"></a></nav>
+    <nav class="nav"><a class="active" href="">Welcome</a><a href="portfolio/">Portfolio</a><a href="photography/">Photography</a><a href="resume/"></a></nav>
   </aside>
   <div class="shade" id="shade"></div>
   <main>
-    <section><div class="kicker">Welcome to my space</div><h1>Hi, I'm<br>San Htut.</h1><p class="intro">I work with data, build useful projects, and capture the moments I want to remember. Choose a section to explore my work.</p><div class="actions"><a class="btn" href="portfolio.html">View my portfolio</a><a class="btn alt" href="photography.html">See photography</a></div></section>
-    <section class="portal" aria-label="Website sections"><a class="card" href="portfolio.html"><span>01</span><h2>Portfolio</h2><p>About me, projects, skills, and contact information.</p></a><a class="card" href="photography.html"><span>02</span><h2>Photography</h2><p>A place for travel, street, portrait, and everyday photographs.</p></a></section>
+    <section><div class="kicker">Welcome to my space</div><h1>Hi, I'm<br>San Htut.</h1><p class="intro">I work with data, build useful projects, and capture the moments I want to remember. Choose a section to explore my work.</p><div class="actions"><a class="btn" href="portfolio/">View my portfolio</a><a class="btn alt" href="photography/">See photography</a></div></section>
+    <section class="portal" aria-label="Website sections"><a class="card" href="portfolio/"><span>01</span><h2>Portfolio</h2><p>About me, projects, skills, and contact information.</p></a><a class="card" href="photography/"><span>02</span><h2>Photography</h2><p>A place for travel, street, portrait, and everyday photographs.</p></a></section>
   </main>
   <script>
     const sidebar=document.getElementById('sidebar'),shade=document.getElementById('shade'),menu=document.getElementById('menuButton'),close=document.getElementById('closeButton');
@@ -45,16 +45,18 @@
     menu.addEventListener('click',()=>setMenu(true));close.addEventListener('click',()=>setMenu(false));shade.addEventListener('click',()=>setMenu(false));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebar.classList.contains('open'))setMenu(false)});
   </script>
 
-  <script>
-    let typedKeys = "";
-    document.addEventListener("keydown", function (event) {
+ <script>
+  let typedKeys = "";
+
+  document.addEventListener("keydown", function (event) {
     typedKeys += event.key.toLowerCase();
     typedKeys = typedKeys.slice(-6);
-      if (typedKeys === "friend") {
-        window.location.href = "friend.html";
-      }
-    });
-  </script>
-  
+
+    if (typedKeys === "friend") {
+      window.location.href = "friend/";
+      typedKeys = "";
+    }
+  });
+</script>
 </body>
 </html>
