@@ -144,20 +144,7 @@
   </main>
   <script>
     const reactions = ['❤️', '🔥', '😂', '😮'];
-    const storageKey = 'happy-memories-reactions';
-
-    function readState() {
-      try {
-        const raw = localStorage.getItem(storageKey);
-        return raw ? JSON.parse(raw) : {};
-      } catch (error) {
-        return {};
-      }
-    }
-
-    function writeState(state) {
-      localStorage.setItem(storageKey, JSON.stringify(state));
-    }
+    const reactionState = {};
 
     function getFigureKey(figure) {
       const image = figure.querySelector('img');
@@ -167,8 +154,7 @@
 
     function refreshReactionBar(figure) {
       const key = getFigureKey(figure);
-      const state = readState();
-      const entry = state[key] || { active: '', counts: {} };
+      const entry = reactionState[key] || { active: '', counts: {} };
 
       const bar = figure.querySelector('.reaction-bar');
       if (!bar) return;
@@ -191,8 +177,7 @@
 
       figures.forEach((figure) => {
         const key = getFigureKey(figure);
-        const state = readState();
-        const entry = state[key] || { active: '', counts: {} };
+        const entry = reactionState[key] || { active: '', counts: {} };
 
         if (!figure.querySelector('.reaction-bar')) {
           const reactionBar = document.createElement('div');
@@ -220,8 +205,7 @@
             button.appendChild(emojiLabel);
             button.appendChild(count);
             button.addEventListener('click', () => {
-              const currentState = readState();
-              const currentEntry = currentState[key] || { active: '', counts: {} };
+              const currentEntry = reactionState[key] || { active: '', counts: {} };
               const nextEntry = {
                 active: currentEntry.active,
                 counts: { ...currentEntry.counts }
@@ -240,8 +224,7 @@
                 nextEntry.counts[emoji] = (nextEntry.counts[emoji] || 0) + 1;
               }
 
-              currentState[key] = nextEntry;
-              writeState(currentState);
+              reactionState[key] = nextEntry;
               refreshReactionBar(figure);
             });
 
